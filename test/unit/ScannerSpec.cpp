@@ -6,13 +6,13 @@ extern "C" {
 
 /** HELPER FUNCTIONS **/
 
-Scanner fixture(const char *cstr)
+static Scanner fixture(const char *cstr)
 {
     Str input = Str_from(cstr);
     return Scanner_value(CharItr_of_Str(&input));
 }
 
-Token Token_init(TokenType type, const char *cstr)
+static Token Token_init(TokenType type, const char *cstr)
 {
     Token token = {
         type,
@@ -21,13 +21,13 @@ Token Token_init(TokenType type, const char *cstr)
     return token;
 }
 
-void ASSERT_TOKEN_EQ(Token expect, Token actual)
+static void ASSERT_TOKEN_EQ(Token expect, Token actual)
 {
     ASSERT_EQ(expect.type, actual.type);
     ASSERT_STREQ(Str_cstr(&expect.lexeme), Str_cstr(&actual.lexeme));
 }
 
-void ASSERT_TOKENS_EQ(Token expected[], size_t count, Scanner s)
+static void ASSERT_TOKENS_EQ(Token expected[], size_t count, Scanner s)
 {
     for (size_t i = 0; i < count; ++i) {
         ASSERT_TRUE(Scanner_has_next(&s));
