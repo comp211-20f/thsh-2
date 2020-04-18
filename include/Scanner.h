@@ -1,5 +1,5 @@
-#ifndef TOKEN_ITR_H
-#define TOKEN_ITR_H
+#ifndef SCANNER_H
+#define SCANNER_H
 
 #include <stdbool.h>
 #include "CharItr.h"
