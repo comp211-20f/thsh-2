@@ -23,23 +23,33 @@ bool StrVec_empty(const StrVec *self)
 
 void StrVec_push(StrVec *self, Str value)
 {
-    // TODO
+    Vec_set(self, Vec_length(self), &value);
 }
 
 Str StrVec_pop(StrVec *self)
 {
-    Str s = { 0 };
-    // TODO
+    Str s;
+    size_t index = Vec_length(self) - 1;
+    Vec_get(self, index, &s);
+    Vec_splice(self, index, 1, NULL, 0);
     return s;
 }
 
 void StrVec_set(StrVec *self, size_t index, const Str value)
 {
-    // TODO
+    if (index < Vec_length(self)) {
+        Str *s = StrVec_ref(self, index);
+        Str_drop(s);
+    }
+    Vec_set(self, index, &value);
 }
 
 void StrVec_drop(StrVec *self)
 {
-    // TODO
+    while (!StrVec_empty(self)) {
+        Str s = StrVec_pop(self);
+        Str_drop(&s);
+    }
+    Vec_drop(self);
 }
 
