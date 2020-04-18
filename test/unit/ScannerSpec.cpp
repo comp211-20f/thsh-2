@@ -123,12 +123,11 @@ TEST(ScannerSpec, whitespace_pipe)
 
 TEST(ScannerSpec, many_words_and_pipes)
 {
-    Scanner scanner = fixture("  \t the | \t quick \t | \t brown | fox \t   | jumped   ");
+    Scanner scanner = fixture("  \t the | \t quick \t \t brown | fox \t   | jumped   ");
     Token expected[] = {
         { WORD_TOKEN, Str_from("the") },
         { PIPE_TOKEN, Str_from("|") },
         { WORD_TOKEN, Str_from("quick") },
-        { PIPE_TOKEN, Str_from("|") },
         { WORD_TOKEN, Str_from("brown") },
         { PIPE_TOKEN, Str_from("|") },
         { WORD_TOKEN, Str_from("fox") },
