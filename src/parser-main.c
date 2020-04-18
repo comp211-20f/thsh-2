@@ -62,7 +62,7 @@ void print(Node *node, size_t indention) {
             break;
         case COMMAND_NODE:
             printf("COMMAND:");
-            StrVec *words = &node->data.command.words;
+            StrVec *words = &node->data.command;
             for (size_t i = 0; i < StrVec_length(words); ++i) {
                 printf(" %s", Str_cstr(StrVec_ref(words, i)));
             }

@@ -15,7 +15,7 @@ Node* CommandNode_new(StrVec words)
     Node *node = malloc(sizeof(Node));
     OOM_GUARD(node, __FILE__, __LINE__);
     node->type = COMMAND_NODE;
-    node->data.command.words = words;
+    node->data.command = words;
     return node;
 }
 

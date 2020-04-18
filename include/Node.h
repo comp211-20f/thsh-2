@@ -14,9 +14,7 @@ typedef struct Node Node;
 
 typedef const char* ErrorValue;
 
-typedef struct CommandValue {
-    StrVec words;
-} CommandValue;
+typedef StrVec CommandValue;
 
 typedef struct PipeValue {
     Node *left;
@@ -33,6 +31,8 @@ struct Node {
     NodeType type;
     NodeValue data;
 };
+
+/** Node Constructorsand Destructor  */
 
 Node* ErrorNode_new(const char *msg);
 
